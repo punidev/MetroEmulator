@@ -5,7 +5,8 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.IO;
-
+using p = System.Windows.Shapes;
+using b = System.Windows.Controls;
 namespace WpfApplication
 {
     /// <summary>
@@ -13,15 +14,16 @@ namespace WpfApplication
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Tuple<System.Windows.Shapes.Path, System.Windows.Controls.Button>> RedLineObjects;
+        public List<Tuple<p.Path, b.Button>> RedLineObjects;
         public MainWindow()
         {
             InitializeComponent();
             string path = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "backg.png");
             Background = new ImageBrush(new BitmapImage(new Uri(path)));
+            bGreenL_chervhutor.BorderBrush = new SolidColorBrush(Colors.Purple);
         }
 
-        private int GetIdbyPath(System.Windows.Shapes.Path path)
+        private int GetIdbyPath(p.Path path)
         {
             int res = 0;
             for (int i = 0; i < RedLineObjects.Count; i++)
@@ -32,7 +34,7 @@ namespace WpfApplication
             return res;
         }
 
-        private void RouteController(System.Windows.Shapes.Path start, System.Windows.Shapes.Path end)
+        private void RouteController(p.Path start, p.Path end)
         {
             if (GetIdbyPath(start) < GetIdbyPath(end))
             {
@@ -57,8 +59,7 @@ namespace WpfApplication
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RedLineObjects = new List<Tuple<System.Windows.Shapes.Path,
-                                            System.Windows.Controls.Button>>
+            RedLineObjects = new List<Tuple<p.Path, b.Button>>
             {
                Tuple.Create(RedL_akadem,       bRedL_akadem),
                Tuple.Create(RedL_jitomyska,    bRedL_jytomirska),
