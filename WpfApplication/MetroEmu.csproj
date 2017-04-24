@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>1493085656_train.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\1493085656_train.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -110,10 +110,7 @@
     <Resource Include="Resources\backg.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="backg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="1493085656_train.ico" />
+    <Resource Include="Resources\1493085656_train.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

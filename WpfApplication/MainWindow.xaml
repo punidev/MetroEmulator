@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication"
         mc:Ignorable="d"
-        Title="Metro Map" Height="733.957" Width="755.719" Loaded="Window_Loaded" ResizeMode="NoResize" Icon="1493085656_train.ico">
+        Title="Metro Map" Height="733.957" Width="755.719" Loaded="Window_Loaded" ResizeMode="NoResize" Icon="Resources/1493085656_train.ico">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,7 +15,7 @@
     </Window.Resources>
 
     <Grid HorizontalAlignment="Left" Width="926" Height="917" VerticalAlignment="Top">
-        <Image Source="backg.png" Stretch="Fill" Margin="0,0,181,217" MouseDown="button_Click"/>
+        <Image Source="Resources/backg.png" Stretch="Fill" Margin="0,0,181,217" MouseDown="button_Click"/>
         <Grid x:Name="RedLine" Height="240.599" Margin="38.851,157.47,222.479,0" VerticalAlignment="Top">
 
             <Path x:Name="RedL_akadem" Stroke="#FFDA0D06" StrokeThickness="6" 

@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using MetroEmu.Station;
 using p = System.Windows.Shapes;
 using b = System.Windows.Controls;
-using Path = System.IO.Path;
 
 namespace MetroEmu
 {
@@ -28,9 +24,6 @@ namespace MetroEmu
             {
             }
         }
-
-        private List<p.Path> _buttonStack = new List<p.Path>(2);
-
         private static int GetIdbyPath(p.Path path)
         {
             var res = 0;
@@ -86,7 +79,23 @@ namespace MetroEmu
                         if (t.Color == "G")
                             isStartGreen = true;
                 }
-
+                // start 
+                foreach (RouteData t in RouteData.Items.Where(t => Equals(t.Pair.Item1, start)))
+                {
+                    switch (t.Color)
+                    {
+                        case "R":
+                            RouteController(start, isEndRed ? end : isEndBlue ? RedL_kreshatik : RedL_teatralna);
+                            break;
+                        case "G":
+                            RouteController(start, isEndBlue & isStartGreen ? GreenL_palatssportu : GreenL_zolotivorota);
+                            break;
+                        case "B":
+                            RouteController(start, isEndRed ? BlueL_maidan : BlueL_lt);
+                            break;
+                    }
+                }
+                // end
                 foreach (RouteData t in RouteData.Items.Where(t => Equals(t.Pair.Item1, end)))
                 {
                     switch (t.Color)
@@ -103,44 +112,22 @@ namespace MetroEmu
                     }
                 }
 
-                foreach (RouteData t in RouteData.Items.Where(t => Equals(t.Pair.Item1, start)))
-                {
-                    switch (t.Color)
-                    {
-                        case "R":
-                            RouteController(start, isEndRed ? end : isEndBlue ? RedL_kreshatik : RedL_teatralna);
-                            break;
-                        case "G":
-                            RouteController(start, isEndBlue & isStartGreen ? GreenL_palatssportu : GreenL_zolotivorota);
-                            break;
-                        case "B":
-                            RouteController(start, isEndRed ? BlueL_maidan : BlueL_lt);
-                            break;
-                    }
-                }
+                
             }
         }
 
         private void Test()
         {
-            //Switch(RedL_shuliavska, GreenL_dorogozhichi);
+            Switch(RedL_shuliavska, GreenL_dorogozhichi);
             //Switch(GreenL_dorogozhichi, RedL_shuliavska);
             //Switch(RedL_shuliavska, BlueL_petrivka);
             //Switch(BlueL_petrivka, RedL_shuliavska);
             //Switch(GreenL_poznyaki, BlueL_teremki);
-            //Switch(BlueL_teremki,GreenL_poznyaki);
+            //Switch(BlueL_teremki, GreenL_poznyaki);
         }
+        
 
-        private void OpacityControll(bool rev=false)
-        {
-            foreach (var t in RouteData.Items)
-            {
-                t.Pair.Item1.Opacity = rev ? 1.0 : 0.2;
-                t.Pair.Item2.Opacity = rev ? 1.0 : 0.2;
-            }
-        }
-
-        private void RouteController(p.Path start, p.Path end)
+        private static void RouteController(p.Path start, p.Path end)
         {
             var color = Colors.Purple;
             if (GetIdbyPath(start) < GetIdbyPath(end))
@@ -170,56 +157,33 @@ namespace MetroEmu
                 }
             }
         }
-        private static void ColorsFill(IEnumerable<RouteData> lst)
-        {
-            foreach (var t in lst)
-            {
-                switch (t.Color)
-                {
-                    case "R":
-                        t.Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Red);
-                        t.Pair.Item1.Stroke = new SolidColorBrush(Colors.Red);
-                        break;
-                    case "G":
-                        t.Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Green);
-                        t.Pair.Item1.Stroke = new SolidColorBrush(Colors.Green);
-                        break;
-                    case "B":
-                        t.Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Blue);
-                        t.Pair.Item1.Stroke = new SolidColorBrush(Colors.Blue);
-                        break;
-                }
-            }
-        }
-
+        
+       
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             RouteData.Items.AddRange(FillList());
-            ColorsFill(RouteData.Items);
-            //Test();
+            RouteData.ColorsFill(RouteData.Items);
         }
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            _buttonStack.Clear();
-            OpacityControll(true);
-            ColorsFill(RouteData.Items);
+            RouteData.Refresh();
         }
-        private bool CheckBtnArray() => _buttonStack.Count==2;
-
+        
         private void ClickStation(object sender, RoutedEventArgs e)
         {
             var sendData = (b.Button) sender;
-            if (!CheckBtnArray())
+            if (!RouteData.CheckBtnArray())
             {
                 foreach (var t in RouteData.Items.Where(t => Equals(t.Pair.Item2, sendData)))
                 {
-                    _buttonStack.Add(t.Pair.Item1);
+                    RouteData.ButtonStack.Add(t.Pair.Item1);
                     t.Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Black);
                 }
-                if (CheckBtnArray())
+                if (RouteData.CheckBtnArray())
                 {
-                    OpacityControll();
-                    Switch(_buttonStack[0], _buttonStack[1]);
+                    RouteData.OpacityControll();
+                    Switch(RouteData.ButtonStack[0], RouteData.ButtonStack[1]);
                 }
             }
         }
