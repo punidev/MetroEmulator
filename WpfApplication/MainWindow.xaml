@@ -15,8 +15,8 @@
     </Window.Resources>
     <Grid HorizontalAlignment="Left" Width="926" Height="917" VerticalAlignment="Top">
 
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="50" Margin="10,10,0,0"
-                VerticalAlignment="Top" Width="107" Grid.ColumnSpan="2" Click="button_Click" />
+        <Button x:Name="button" Content="Reset" HorizontalAlignment="Left" Height="50" Margin="625,10,0,0"
+                VerticalAlignment="Top" Width="107" Click="button_Click" />
         <Image x:Name="backgroundImage" Stretch="UniformToFill" Height="706.987" VerticalAlignment="Top"
                Source="pack://siteoforigin:,,,/Resources/back.png" Margin="-0.582,-3.584,0,0"
                HorizontalAlignment="Left" Width="754.191" RenderTransformOrigin="0.5,0.5" d:IsHidden="True">
@@ -716,113 +716,113 @@
         </Grid>
         <Grid x:Name="RedLinesButtons" Height="269.984" Margin="35.651,136.062,219.277,0" VerticalAlignment="Top">
             <Button x:Name="bRedL_akadem" Width="20"
-                    Height="20" Margin="0,0,651.072,249.984" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="0,0,651.072,249.984" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_jytomirska" Width="20"
-                    Height="20" Margin="26.496,30.336,624.576,219.648" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="26.496,30.336,624.576,219.648" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_svyatoshyn" Width="20"
-                    Height="20" Margin="50.688,55.68,600.384,194.304" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="50.688,55.68,600.384,194.304" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_nivki" Width="20"
-                    Height="20" Margin="74.496,80.64,576.576,169.344" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="74.496,80.64,576.576,169.344" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_berest" Width="20"
-                    Height="20" Margin="105.6,113.664,545.472,136.32" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="105.6,113.664,545.472,136.32" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_shulyavska" Width="20"
-                    Height="20" Margin="135.552,141.312,515.52,108.672" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="135.552,141.312,515.52,108.672" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_polytech" Width="20"
-                    Height="20" Margin="160.128,166.656,490.944,83.328" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="160.128,166.656,490.944,83.328" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_vokzalna" Width="20"
-                    Height="20" Margin="211.2,178.176,439.872,71.808" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="211.2,178.176,439.872,71.808" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_univer" Width="20"
-                    Height="20" Margin="270.144,180.608,380.928,69.376" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="270.144,180.608,380.928,69.376" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_teatralna" Width="20"
-                    Height="20" Margin="324.928,180.608,326.144,69.376" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="324.928,180.608,326.144,69.376" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_kreshatik" Width="20"
-                    Height="20" Margin="398.144,180.608,252.928,69.376" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="398.144,180.608,252.928,69.376" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_arsenalna" Width="20"
-                    Height="20" Margin="475.456,215.424,175.616,34.56" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="475.456,215.424,175.616,34.56" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_dnipro" Width="20"
-                    Height="20" Margin="497.984,237.184,153.088,12.8" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="497.984,237.184,153.088,12.8" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_gidropark" Width="20"
-                    Height="20" Margin="538.944,249.984,112.128,0" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="538.944,249.984,112.128,0" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_livoberezna" Width="20"
-                    Height="20" Margin="580.416,237.184,70.656,12.8" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="580.416,237.184,70.656,12.8" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_darnitsa" Width="20"
-                    Height="20" Margin="602.176,215.424,48.896,34.56" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="602.176,215.424,48.896,34.56" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_chernigivska" Width="20"
-                    Height="20" Margin="623.936,193.152,27.136,56.832" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="623.936,193.152,27.136,56.832" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bRedL_lisova" Width="20"
-                    Height="20" Margin="651.072,166.656,0,83.328" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="651.072,166.656,0,83.328" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
         </Grid>
         <Grid x:Name="BlueLinesButtons" HorizontalAlignment="Left" Margin="146.154,32.731,0,253.155" Width="291.152">
             <Button x:Name="bBlueL_heroevdnipra" Width="20"
-                    Height="20" Margin="270.448,0,0.704,611.114" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="270.448,0,0.704,611.114" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_minska" Width="20"
-                    Height="20" Margin="269.968,41.016,1.184,570.098" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="269.968,41.016,1.184,570.098" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_obolon" Width="20"
-                    Height="20" Margin="269.616,75.931,1.536,535.183" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="269.616,75.931,1.536,535.183" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_petrivka" Width="20"
-                    Height="20" Margin="271.152,109.403,0,501.711" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="271.152,109.403,0,501.711" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_tshevchenka" Width="20"
-                    Height="20" Margin="271.152,146.815,0,464.299" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="271.152,146.815,0,464.299" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_kontrplosha" Width="20"
-                    Height="20" Margin="270.64,184.539,0.512,426.575" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="270.64,184.539,0.512,426.575" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_postplosha" Width="20"
-                    Height="20" Margin="271.152,222.667,0,388.447" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="271.152,222.667,0,388.447" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_maidan" Width="20"
-                    Height="20" Margin="270.448,268.795,0.704,342.319" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="270.448,268.795,0.704,342.319" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_lt" Width="20"
-                    Height="20" Margin="218.368,367.978,52.784,243.136" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="218.368,367.978,52.784,243.136" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_olimpiiska" Width="20"
-                    Height="20" Margin="198.592,410.986,72.56,200.128" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="198.592,410.986,72.56,200.128" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_palatsukraina" Width="20"
-                    Height="20" Margin="198.592,442.282,72.56,168.832" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="198.592,442.282,72.56,168.832" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_lyubidska" Width="20"
-                    Height="20" Margin="198.592,475.114,72.56,136" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="198.592,475.114,72.56,136" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_demiivska" Width="20"
-                    Height="20" Margin="169.024,523.114,102.128,88" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="169.024,523.114,102.128,88" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_holosiivska" Width="20"
-                    Height="20" Margin="144.064,548.074,127.088,63.04" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="144.064,548.074,127.088,63.04" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_vasylkivska" Width="20"
-                    Height="20" Margin="120.64,570.73,150.512,40.384" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="120.64,570.73,150.512,40.384" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_mvc" Width="20"
-                    Height="20" Margin="98.048,592.33,173.104,18.784" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
-                <Button x:Name="bBlueL_ipodrom" Width="20"
-                    Height="20" Margin="54.4,611.114,216.752,0" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="98.048,592.33,173.104,18.784" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
+            <Button x:Name="bBlueL_ipodrom" Width="20"
+                    Height="20" Margin="54.4,611.114,216.752,0" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bBlueL_teremki" Width="20"
-                    Height="20" Margin="0,611.114,271.152,0" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                    Height="20" Margin="0,611.114,271.152,0" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
         </Grid>
         <Grid x:Name="GreenLinesButtons" Margin="240.77,179.546,220.484,253.155">
             <Button x:Name="bGreenL_syrets" Width="20"
-                Height="20" Margin="0,0,444.746,464.299" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="0,0,444.746,464.299" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_dorogozhichi" Width="20"
-                Height="20" Margin="34.944,36.864,409.802,427.435" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="34.944,36.864,409.802,427.435" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_lukyanivska" Width="20"
-                Height="20" Margin="63.168,66.432,381.578,397.867" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="63.168,66.432,381.578,397.867" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_zolotivorota" Width="20"
-                Height="20" Margin="100.224,115.2,344.522,349.099" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="100.224,115.2,344.522,349.099" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_palatssportu" Width="20"
-                Height="20" Margin="158.208,221.859,286.538,242.44" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="158.208,221.859,286.538,242.44" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_klovska" Width="20"
-                Height="20" Margin="172.8,260.979,271.946,203.32" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="172.8,260.979,271.946,203.32" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_pecherska" Width="20"
-                Height="20" Margin="172.8,291.363,271.946,172.936" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="172.8,291.363,271.946,172.936" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_druzbinarodiv" Width="20"
-                Height="20" Margin="172.8,326.179,271.946,138.12" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="172.8,326.179,271.946,138.12" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_vidubichi" Width="20"
-                Height="20" Margin="189.952,364.835,254.794,99.464" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="189.952,364.835,254.794,99.464" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_slavutich" Width="20"
-                Height="20" Margin="244.672,419.555,200.074,44.744" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="244.672,419.555,200.074,44.744" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_osokorki" Width="20"
-                Height="20" Margin="272.704,447.587,172.042,16.712" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="272.704,447.587,172.042,16.712" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_poznyaki" Width="20"
-                Height="20" Margin="306.304,464.299,138.442,0" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="306.304,464.299,138.442,0" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_harkivska" Width="20"
-                Height="20" Margin="355.84,464.299,88.906,0" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="355.84,464.299,88.906,0" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_vyrlytsa" Width="20"
-                Height="20" Margin="393.92,452.519,50.826,11.78" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="393.92,452.519,50.826,11.78" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_borispilska" Width="20"
-                Height="20" Margin="417.768,429.671,26.978,34.628" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="417.768,429.671,26.978,34.628" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
             <Button x:Name="bGreenL_chervhutor"  Width="20" 
-                Height="20" Margin="444.746,403.559,0,60.74" Click="Button_Click_1" Style="{StaticResource RoundButton}"/>
+                Height="20" Margin="444.746,403.559,0,60.74" Click="ClickStation" Style="{StaticResource RoundButton}" Background="White" />
         </Grid>
     </Grid>
 </Window>
