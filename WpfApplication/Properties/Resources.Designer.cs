@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfApplication.Properties {
+namespace MetroEmu.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WpfApplication.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfApplication.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MetroEmu.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,9 @@ namespace WpfApplication.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap back {
+        internal static System.Drawing.Bitmap backg {
             get {
-                object obj = ResourceManager.GetObject("back", resourceCulture);
+                object obj = ResourceManager.GetObject("backg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.IO;
-using System.Linq;
+using MetroEmu.Station;
 using p = System.Windows.Shapes;
 using b = System.Windows.Controls;
-namespace WpfApplication
+using Path = System.IO.Path;
+
+namespace MetroEmu
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -17,13 +20,18 @@ namespace WpfApplication
     {
         public MainWindow()
         {
-            InitializeComponent();
-            string path = Path.Combine(Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName), "backg.png");
-            Background = new ImageBrush(new BitmapImage(new Uri(path)));
-            
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception)
+            {
+            }
         }
 
-        private int GetIdbyPath(p.Path path)
+        private List<p.Path> _buttonStack = new List<p.Path>(2);
+
+        private static int GetIdbyPath(p.Path path)
         {
             var res = 0;
             for (var i = 0; i < RouteData.Items.Count; i++)
@@ -37,11 +45,12 @@ namespace WpfApplication
         private void Switch(p.Path start, p.Path end)
         {
             bool isEndBlue = false, 
-                 isEndRed = false, 
+                 isEndRed = false,
+                 isEndGreen=false, 
                  isStartGreen = false, 
                  isStartBlue = false, 
-                 isEndGreen=false, 
                  isStartRed=false;
+
             if (Equals(
                 RouteData.Items
                     .Where(t => Equals(t.Pair.Item1, start))
@@ -122,345 +131,46 @@ namespace WpfApplication
             //Switch(BlueL_teremki,GreenL_poznyaki);
         }
 
+        private void OpacityControll(bool rev=false)
+        {
+            foreach (var t in RouteData.Items)
+            {
+                t.Pair.Item1.Opacity = rev ? 1.0 : 0.2;
+                t.Pair.Item2.Opacity = rev ? 1.0 : 0.2;
+            }
+        }
+
         private void RouteController(p.Path start, p.Path end)
         {
+            var color = Colors.Purple;
             if (GetIdbyPath(start) < GetIdbyPath(end))
             {
                 for (var i = GetIdbyPath(start); i <= GetIdbyPath(end) - 1; i++)
-                    RouteData.Items[i].Pair.Item1.Stroke = new SolidColorBrush(Colors.Purple);
+                {
+                    RouteData.Items[i].Pair.Item1.Stroke = new SolidColorBrush(color);
+                    RouteData.Items[i].Pair.Item1.Opacity = 1.0;
+                }
                 for (var i = GetIdbyPath(start); i <= GetIdbyPath(end); i++)
-                    RouteData.Items[i].Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Purple);
+                {
+                    RouteData.Items[i].Pair.Item2.BorderBrush = new SolidColorBrush(color);
+                    RouteData.Items[i].Pair.Item2.Opacity = 1.0;
+                }
             }
             else
             {
                 for (var i = GetIdbyPath(start) - 1; i >= GetIdbyPath(end); i--)
-                    RouteData.Items[i].Pair.Item1.Stroke = new SolidColorBrush(Colors.Purple);
+                {
+                    RouteData.Items[i].Pair.Item1.Stroke = new SolidColorBrush(color);
+                    RouteData.Items[i].Pair.Item1.Opacity = 1.0;
+                }
                 for (var i = GetIdbyPath(start); i >= GetIdbyPath(end); i--)
-                    RouteData.Items[i].Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Purple);
+                {
+                    RouteData.Items[i].Pair.Item2.BorderBrush = new SolidColorBrush(color);
+                    RouteData.Items[i].Pair.Item2.Opacity = 1.0;
+                }
             }
         }
-
-        private IEnumerable<RouteData> FillList()
-        {
-            return new List<RouteData>
-            {
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_akadem, bRedL_akadem),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_jitomyska, bRedL_jytomirska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_svyatoshyn,   bRedL_svyatoshyn),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_nivki, bRedL_nivki),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_berest, bRedL_berest),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_shuliavska, bRedL_shulyavska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_polytech, bRedL_polytech),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_vokzalna, bRedL_vokzalna),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_univer, bRedL_univer),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_teatralna, bRedL_teatralna),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_kreshatik, bRedL_kreshatik),
-                    IsTransfer = true
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_arsenalna, bRedL_arsenalna),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_dnipro, bRedL_dnipro),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_gidropark, bRedL_gidropark),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_livoberejna, bRedL_livoberezna),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_darnitsa, bRedL_darnitsa),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_chernigovska, bRedL_chernigivska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "R",
-                    Pair = Tuple.Create(RedL_lisova, bRedL_lisova),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_syrets, bGreenL_syrets),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_dorogozhichi, bGreenL_dorogozhichi),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_lukyanivska, bGreenL_lukyanivska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_zolotivorota, bGreenL_zolotivorota),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_palatssportu, bGreenL_palatssportu),
-                    IsTransfer = true
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_klovska, bGreenL_klovska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_pecherska, bGreenL_pecherska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_druzbinarodiv, bGreenL_druzbinarodiv),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_vidubichi, bGreenL_vidubichi),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair =
-                        Tuple.Create(GreenL_slavutich, bGreenL_slavutich),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_osokorki, bGreenL_osokorki),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_poznyaki, bGreenL_poznyaki),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_harkivksa, bGreenL_harkivska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_vurlytsa, bGreenL_vyrlytsa),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_boryspilska, bGreenL_borispilska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "G",
-                    Pair = Tuple.Create(GreenL_chervhutor, bGreenL_chervhutor),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_teremki, bBlueL_teremki),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_ipodrom, bBlueL_ipodrom),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_mvc, bBlueL_mvc),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_vasylkivska, bBlueL_vasylkivska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_holosiivska, bBlueL_holosiivska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_demiivska, bBlueL_demiivska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_lybidska, bBlueL_lyubidska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_palatsukraina, bBlueL_palatsukraina),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_olimpiiska, bBlueL_olimpiiska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_lt, bBlueL_lt),
-                    IsTransfer = true
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_maidan, bBlueL_maidan),
-                    IsTransfer = true
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_postplosha, bBlueL_postplosha),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_kontrplosha, bBlueL_kontrplosha),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_tshevchenka, bBlueL_tshevchenka),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_petrivka, bBlueL_petrivka),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_obolon, bBlueL_obolon),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_minska, bBlueL_minska),
-                    IsTransfer = false
-                },
-                new RouteData
-                {
-                    Color = "B",
-                    Pair = Tuple.Create(BlueL_heroevdnipra, bBlueL_heroevdnipra),
-                    IsTransfer = false
-                },
-            };
-        }
-
-        private void ColorsFill(List<RouteData> lst)
+        private static void ColorsFill(IEnumerable<RouteData> lst)
         {
             foreach (var t in lst)
             {
@@ -477,7 +187,6 @@ namespace WpfApplication
                     case "B":
                         t.Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Blue);
                         t.Pair.Item1.Stroke = new SolidColorBrush(Colors.Blue);
-   
                         break;
                 }
             }
@@ -488,40 +197,298 @@ namespace WpfApplication
             RouteData.Items.AddRange(FillList());
             ColorsFill(RouteData.Items);
             //Test();
-
         }
-
-        private bool isFirstSelected = false, isSecondSelected = false, isReseted = false;
-        private List<p.Path> _buttonStack = new List<p.Path>(2);
-
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            isReseted = true;
             _buttonStack.Clear();
+            OpacityControll(true);
             ColorsFill(RouteData.Items);
         }
-        
-
-        private bool CheckBtnArray()
-        {
-            return _buttonStack.Count==2;
-        }
+        private bool CheckBtnArray() => _buttonStack.Count==2;
 
         private void ClickStation(object sender, RoutedEventArgs e)
         {
-            var a = (b.Button) sender;
+            var sendData = (b.Button) sender;
             if (!CheckBtnArray())
             {
-                foreach (var t in RouteData.Items.Where(t => Equals(t.Pair.Item2, a)))
+                foreach (var t in RouteData.Items.Where(t => Equals(t.Pair.Item2, sendData)))
                 {
                     _buttonStack.Add(t.Pair.Item1);
-                    t.Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Blue); ;
+                    t.Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Black);
                 }
                 if (CheckBtnArray())
                 {
+                    OpacityControll();
                     Switch(_buttonStack[0], _buttonStack[1]);
                 }
             }
+        }
+        private IEnumerable<RouteData> FillList()
+        {
+            return new List<RouteData>
+            {
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_akadem, bRedL_akadem),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_jitomyska, bRedL_jytomirska),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_svyatoshyn, bRedL_svyatoshyn),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_nivki, bRedL_nivki),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_berest, bRedL_berest),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_shuliavska, bRedL_shulyavska),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_polytech, bRedL_polytech),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_vokzalna, bRedL_vokzalna),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_univer, bRedL_univer),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_teatralna, bRedL_teatralna),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_kreshatik, bRedL_kreshatik),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_arsenalna, bRedL_arsenalna),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_dnipro, bRedL_dnipro),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_gidropark, bRedL_gidropark),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_livoberejna, bRedL_livoberezna),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_darnitsa, bRedL_darnitsa),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_chernigovska, bRedL_chernigivska),
+                },
+                new RouteData
+                {
+                    Color = "R",
+                    Pair = Tuple.Create(RedL_lisova, bRedL_lisova),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_syrets, bGreenL_syrets),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_dorogozhichi, bGreenL_dorogozhichi),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_lukyanivska, bGreenL_lukyanivska),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_zolotivorota, bGreenL_zolotivorota),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_palatssportu, bGreenL_palatssportu),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_klovska, bGreenL_klovska),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_pecherska, bGreenL_pecherska),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_druzbinarodiv, bGreenL_druzbinarodiv),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_vidubichi, bGreenL_vidubichi),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair =
+                        Tuple.Create(GreenL_slavutich, bGreenL_slavutich),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_osokorki, bGreenL_osokorki),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_poznyaki, bGreenL_poznyaki),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_harkivksa, bGreenL_harkivska),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_vurlytsa, bGreenL_vyrlytsa),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_boryspilska, bGreenL_borispilska),
+                },
+                new RouteData
+                {
+                    Color = "G",
+                    Pair = Tuple.Create(GreenL_chervhutor, bGreenL_chervhutor),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_teremki, bBlueL_teremki),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_ipodrom, bBlueL_ipodrom),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_mvc, bBlueL_mvc),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_vasylkivska, bBlueL_vasylkivska),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_holosiivska, bBlueL_holosiivska),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_demiivska, bBlueL_demiivska),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_lybidska, bBlueL_lyubidska),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_palatsukraina, bBlueL_palatsukraina),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_olimpiiska, bBlueL_olimpiiska),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_lt, bBlueL_lt),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_maidan, bBlueL_maidan),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_postplosha, bBlueL_postplosha),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_kontrplosha, bBlueL_kontrplosha),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_tshevchenka, bBlueL_tshevchenka),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_petrivka, bBlueL_petrivka),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_obolon, bBlueL_obolon),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_minska, bBlueL_minska),
+                },
+                new RouteData
+                {
+                    Color = "B",
+                    Pair = Tuple.Create(BlueL_heroevdnipra, bBlueL_heroevdnipra),
+                },
+            };
         }
     }
 }
