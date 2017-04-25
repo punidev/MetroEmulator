@@ -175,272 +175,32 @@ namespace MetroEmu
                 }
             }
         }
+
+        private static IEnumerable<RouteData> GetElements(
+            b.Panel gridLines, 
+            b.Panel gridButtons, 
+            LineColor color
+            )
+        {
+            var items = new List<RouteData>();
+            for (var i = 0; i < gridLines.Children.Count; i++)
+            {
+                items.Add(new RouteData
+                {
+                    Color = color,
+                    Pair = Tuple.Create((p.Path) gridLines.Children[i], (b.Button) gridButtons.Children[i])
+                });
+            }
+            return items;
+        }
+
         private IEnumerable<RouteData> FillList()
         {
-            return new List<RouteData>
-            {
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_akadem, bRedL_akadem),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_jitomyska, bRedL_jytomirska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_svyatoshyn, bRedL_svyatoshyn),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_nivki, bRedL_nivki),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_berest, bRedL_berest),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_shuliavska, bRedL_shulyavska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_polytech, bRedL_polytech),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_vokzalna, bRedL_vokzalna),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_univer, bRedL_univer),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_teatralna, bRedL_teatralna),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_kreshatik, bRedL_kreshatik),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_arsenalna, bRedL_arsenalna),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_dnipro, bRedL_dnipro),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_gidropark, bRedL_gidropark),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_livoberejna, bRedL_livoberezna),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_darnitsa, bRedL_darnitsa),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_chernigovska, bRedL_chernigivska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Red,
-                    Pair = Tuple.Create(RedL_lisova, bRedL_lisova),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_syrets, bGreenL_syrets),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_dorogozhichi, bGreenL_dorogozhichi),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_lukyanivska, bGreenL_lukyanivska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_zolotivorota, bGreenL_zolotivorota),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_palatssportu, bGreenL_palatssportu),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_klovska, bGreenL_klovska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_pecherska, bGreenL_pecherska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_druzbinarodiv, bGreenL_druzbinarodiv),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_vidubichi, bGreenL_vidubichi),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair =
-                        Tuple.Create(GreenL_slavutich, bGreenL_slavutich),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_osokorki, bGreenL_osokorki),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_poznyaki, bGreenL_poznyaki),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_harkivksa, bGreenL_harkivska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_vurlytsa, bGreenL_vyrlytsa),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_boryspilska, bGreenL_borispilska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Green,
-                    Pair = Tuple.Create(GreenL_chervhutor, bGreenL_chervhutor),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_teremki, bBlueL_teremki),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_ipodrom, bBlueL_ipodrom),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_mvc, bBlueL_mvc),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_vasylkivska, bBlueL_vasylkivska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_holosiivska, bBlueL_holosiivska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_demiivska, bBlueL_demiivska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_lybidska, bBlueL_lyubidska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_palatsukraina, bBlueL_palatsukraina),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_olimpiiska, bBlueL_olimpiiska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_lt, bBlueL_lt),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_maidan, bBlueL_maidan),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_postplosha, bBlueL_postplosha),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_kontrplosha, bBlueL_kontrplosha),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_tshevchenka, bBlueL_tshevchenka),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_petrivka, bBlueL_petrivka),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_obolon, bBlueL_obolon),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_minska, bBlueL_minska),
-                },
-                new RouteData
-                {
-                    Color = LineColor.Blue,
-                    Pair = Tuple.Create(BlueL_heroevdnipra, bBlueL_heroevdnipra),
-                },
-            };
+            var items = new List<RouteData>();
+            items.AddRange(GetElements(RedLine, RedLinesButtons, LineColor.Red));
+            items.AddRange(GetElements(GreenLine, GreenLinesButtons, LineColor.Green));
+            items.AddRange(GetElements(BlueLine, BlueLinesButtons, LineColor.Blue));
+            return items;
         }
     }
 }

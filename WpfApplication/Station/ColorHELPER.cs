@@ -21,9 +21,7 @@ namespace MetroEmu.Station
             }
         }
 
-        internal static LineColor Select(this System.Windows.Shapes.Path start)
-        {
-            return Items.Where(t => Equals(t.Pair.Item1, start)).Select(t => t.Color).FirstOrDefault();
-        }
+        internal static LineColor Select(this System.Windows.Shapes.Path start) => 
+            Items.Where(t => Equals(t.Pair.Item1, start)).Select(t => t.Color).FirstOrDefault();
     }
 }
