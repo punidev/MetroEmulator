@@ -36,6 +36,7 @@ namespace MetroEmu
         {
             Refresh();
         }
+
         private static int GetIdbyPath(p.Path path)
         {
             var res = 0;
@@ -46,14 +47,6 @@ namespace MetroEmu
             }
             return res;
         }
-        //private LineColor Select(p.Path start, bool isStart=true)
-        //{
-        //    return Items.Where(t => Equals(t.Pair.Item1, start)).Select(t => t.Color).FirstOrDefault();
-        //}
-        //private LineColor IsEnd(p.Path end)
-        //{
-        //    return Items.Where(t => Equals(t.Pair.Item1, end)).Select(t => t.Color).FirstOrDefault();
-        //}
 
         private void Switch(p.Path start, p.Path end)
         {
@@ -66,34 +59,56 @@ namespace MetroEmu
             else
             {
                 // start 
-                foreach (RouteData t in Items.Where(t => Equals(t.Pair.Item1, start)))
+                foreach (var t in Items.Where(t => Equals(t.Pair.Item1, start)))
                 {
                     switch (t.Color)
                     {
                         case LineColor.Red:
-                            RouteController(start, end.Select() == LineColor.Blue ? RedL_kreshatik : RedL_teatralna);
+                            RouteController(start, 
+                                Equals(end.Select(), LineColor.Blue) 
+                                    ? RedL_kreshatik 
+                                    : RedL_teatralna);
                             break;
                         case LineColor.Green:
-                            RouteController(start, end.Select() == LineColor.Blue && start.Select() == LineColor.Green ? GreenL_palatssportu : GreenL_zolotivorota);
+                            RouteController(start,
+                                Equals(end.Select(), LineColor.Blue) && 
+                                Equals(start.Select(), LineColor.Green)
+                                    ? GreenL_palatssportu
+                                    : GreenL_zolotivorota);
                             break;
                         case LineColor.Blue:
-                            RouteController(start, end.Select() == LineColor.Red ? BlueL_maidan : BlueL_lt);
+                            RouteController(start, 
+                                Equals(end.Select(), LineColor.Red) 
+                                    ? BlueL_maidan 
+                                    : BlueL_lt);
                             break;
                     }
                 }
                 // end
-                foreach (RouteData t in Items.Where(t => Equals(t.Pair.Item1, end)))
+                foreach (var t in Items.Where(t => Equals(t.Pair.Item1, end)))
                 {
                     switch (t.Color)
                     {
                         case LineColor.Red:
-                            RouteController(end.Select() == LineColor.Red && start.Select() == LineColor.Green ? RedL_teatralna: RedL_kreshatik, end);
+                            RouteController(
+                                Equals(end.Select(), LineColor.Red) && 
+                                Equals(start.Select(), LineColor.Green)
+                                    ? RedL_teatralna
+                                    : RedL_kreshatik, end);
                             break;
                         case LineColor.Green:
-                            RouteController(end.Select() == LineColor.Green && start.Select() == LineColor.Blue ? GreenL_palatssportu : GreenL_zolotivorota, end);
+                            RouteController(
+                                Equals(end.Select(), LineColor.Green) && 
+                                Equals(start.Select(), LineColor.Blue)
+                                    ? GreenL_palatssportu
+                                    : GreenL_zolotivorota, end);
                             break;
                         case LineColor.Blue:
-                            RouteController(end.Select() == LineColor.Blue && start.Select() == LineColor.Green ? BlueL_lt : BlueL_maidan, end);
+                            RouteController(
+                                Equals(end.Select(), LineColor.Blue) && 
+                                Equals(start.Select(), LineColor.Green)
+                                    ? BlueL_lt
+                                    : BlueL_maidan, end);
                             break;
                     }
                 }
