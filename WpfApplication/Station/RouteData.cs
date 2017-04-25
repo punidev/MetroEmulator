@@ -5,7 +5,7 @@ using p = System.Windows.Shapes;
 using b = System.Windows.Controls;
 namespace MetroEmu.Station
 {
-    internal class RouteData
+    public class RouteData
     {
         public enum LineColor { Red, Green, Blue }
         public static List<RouteData> Items = new List<RouteData>();

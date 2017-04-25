@@ -31,19 +31,6 @@
                     </TransformGroup>
                 </Path.RenderTransform>
             </Path>
-            <Path x:Name="RedL_polytech" Stroke="#FFDA0D06" StrokeThickness="6"
-                    Margin="170.44,0,0,70.651" Stretch="Fill" HorizontalAlignment="Left"
-                  Height="10.695" RenderTransformOrigin="0.74,0.289" VerticalAlignment="Bottom" Width="42.3"
-                  Data="M200,150 A200,300,0,0,0,480,20">
-                <Path.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform />
-                        <SkewTransform AngleX="-8.63" />
-                        <RotateTransform Angle="382.381" />
-                        <TranslateTransform X="1.029" Y="2.948" />
-                    </TransformGroup>
-                </Path.RenderTransform>
-            </Path>
             <Path x:Name="RedL_jitomyska" Stroke="#FFDA0D06" StrokeThickness="6" 
                    Margin="33.682,28.203,0,0" Stretch="Fill" HorizontalAlignment="Left"
                   Height="6" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Width="22.227"
@@ -106,6 +93,19 @@
                         <SkewTransform />
                         <RotateTransform Angle="44.037" />
 
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Path x:Name="RedL_polytech" Stroke="#FFDA0D06" StrokeThickness="6"
+                    Margin="170.44,0,0,70.651" Stretch="Fill" HorizontalAlignment="Left"
+                  Height="10.695" RenderTransformOrigin="0.74,0.289" VerticalAlignment="Bottom" Width="42.3"
+                  Data="M200,150 A200,300,0,0,0,480,20">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform AngleX="-8.63" />
+                        <RotateTransform Angle="382.381" />
+                        <TranslateTransform X="1.029" Y="2.948" />
                     </TransformGroup>
                 </Path.RenderTransform>
             </Path>
@@ -758,60 +758,60 @@
                     Style="{StaticResource RoundButton}" />
         </Grid>
         <Grid x:Name="BlueLinesButtons" HorizontalAlignment="Left" Margin="146.154,32.731,0,253.155" Width="291.152">
-            <Button x:Name="bBlueL_heroevdnipra" Width="20"
-                    Height="20" Margin="270.448,0,0.704,611.114" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_minska" Width="20"
-                    Height="20" Margin="269.968,41.016,1.184,570.098" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_obolon" Width="20"
-                    Height="20" Margin="269.616,75.931,1.536,535.183" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_petrivka" Width="20"
-                    Height="20" Margin="271.152,109.403,0,501.711" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_tshevchenka" Width="20"
-                    Height="20" Margin="271.152,146.815,0,464.299" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_kontrplosha" Width="20"
-                    Height="20" Margin="270.64,184.539,0.512,426.575" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_postplosha" Width="20"
-                    Height="20" Margin="271.152,222.667,0,388.447" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_maidan" Width="20"
-                    Height="20" Margin="269.968,268.155,1.184,342.959" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_lt" Width="20"
-                    Height="20" Margin="218.368,367.978,52.784,243.136" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_olimpiiska" Width="20"
-                    Height="20" Margin="198.592,410.986,72.56,200.128" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_palatsukraina" Width="20"
-                    Height="20" Margin="198.592,442.282,72.56,168.832" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_lyubidska" Width="20"
-                    Height="20" Margin="198.592,475.114,72.56,136" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_demiivska" Width="20"
-                    Height="20" Margin="169.024,523.114,102.128,88" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_holosiivska" Width="20"
-                    Height="20" Margin="144.064,548.074,127.088,63.04" Click="ClickStation"
-                    Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_vasylkivska" Width="20"
-                    Height="20" Margin="120.64,570.73,150.512,40.384" Click="ClickStation"
+            <Button x:Name="bBlueL_teremki" Width="20"
+                    Height="20" Margin="0,611.114,271.152,0" Click="ClickStation" Style="{StaticResource RoundButton}"
+                    />
+            <Button x:Name="bBlueL_ipodrom" Width="20"
+                    Height="20" Margin="54.4,611.114,216.752,0" Click="ClickStation"
                     Style="{StaticResource RoundButton}" />
             <Button x:Name="bBlueL_mvc" Width="20"
                     Height="20" Margin="98.048,592.33,173.104,18.784" Click="ClickStation"
                     Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_ipodrom" Width="20"
-                    Height="20" Margin="54.4,611.114,216.752,0" Click="ClickStation"
+            <Button x:Name="bBlueL_vasylkivska" Width="20"
+                    Height="20" Margin="120.64,570.73,150.512,40.384" Click="ClickStation"
                     Style="{StaticResource RoundButton}" />
-            <Button x:Name="bBlueL_teremki" Width="20"
-                    Height="20" Margin="0,611.114,271.152,0" Click="ClickStation" Style="{StaticResource RoundButton}"
-                    />
+            <Button x:Name="bBlueL_holosiivska" Width="20"
+                    Height="20" Margin="144.064,548.074,127.088,63.04" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_demiivska" Width="20"
+                    Height="20" Margin="169.024,523.114,102.128,88" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_lyubidska" Width="20"
+                    Height="20" Margin="198.592,475.114,72.56,136" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_palatsukraina" Width="20"
+                    Height="20" Margin="198.592,442.282,72.56,168.832" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_olimpiiska" Width="20"
+                    Height="20" Margin="198.592,410.986,72.56,200.128" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_lt" Width="20"
+                    Height="20" Margin="218.368,367.978,52.784,243.136" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_maidan" Width="20"
+                    Height="20" Margin="269.968,268.155,1.184,342.959" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_postplosha" Width="20"
+                    Height="20" Margin="271.152,222.667,0,388.447" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_kontrplosha" Width="20"
+                    Height="20" Margin="270.64,184.539,0.512,426.575" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_tshevchenka" Width="20"
+                    Height="20" Margin="271.152,146.815,0,464.299" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_petrivka" Width="20"
+                    Height="20" Margin="271.152,109.403,0,501.711" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_obolon" Width="20"
+                    Height="20" Margin="269.616,75.931,1.536,535.183" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_minska" Width="20"
+                    Height="20" Margin="269.968,41.016,1.184,570.098" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
+            <Button x:Name="bBlueL_heroevdnipra" Width="20"
+                    Height="20" Margin="270.448,0,0.704,611.114" Click="ClickStation"
+                    Style="{StaticResource RoundButton}" />
         </Grid>
         <Grid x:Name="GreenLinesButtons" Margin="240.77,179.546,220.484,253.155">
             <Button x:Name="bGreenL_syrets" Width="20"
