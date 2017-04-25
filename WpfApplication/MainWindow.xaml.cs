@@ -161,12 +161,13 @@ namespace MetroEmu
         private void ClickStation(object sender, RoutedEventArgs e)
         {
             var sendData = (b.Button) sender;
+            var currentColor = new SolidColorBrush(Colors.Black);
             if (!CheckBtnArray())
             {
                 foreach (var t in Items.Where(t => Equals(t.Pair.Item2, sendData)))
                 {
                     ButtonStack.Add(t.Pair.Item1);
-                    t.Pair.Item2.BorderBrush = new SolidColorBrush(Colors.Black);
+                    t.Pair.Item2.BorderBrush = currentColor;
                 }
                 if (CheckBtnArray())
                 {
