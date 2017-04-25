@@ -176,21 +176,13 @@ namespace MetroEmu
             }
         }
 
-<<<<<<< HEAD
         private static IEnumerable<RouteData> GetElements(
             b.Panel gridLines, 
             b.Panel gridButtons, 
-            LineColor color
-            )
-        {
-            var items = new List<RouteData>();
-            for (var i = 0; i < gridLines.Children.Count; i++)
-=======
-        private static IEnumerable<RouteData> GetElements(b.Panel gridLines, b.Panel gridButtons, LineColor color)
+            LineColor color)
         {
             var items = new List<RouteData>();
             for (int i = 0; i < gridLines.Children.Count; i++)
->>>>>>> origin/master
             {
                 items.Add(new RouteData
                 {
