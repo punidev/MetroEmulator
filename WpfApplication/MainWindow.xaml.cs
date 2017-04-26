@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -115,17 +116,6 @@ namespace MetroEmu
             }
         }
 
-        private void Test()
-        {
-            Switch(RedL_shuliavska, GreenL_dorogozhichi);
-            //Switch(GreenL_dorogozhichi, RedL_shuliavska);
-            //Switch(RedL_shuliavska, BlueL_petrivka);
-            //Switch(BlueL_petrivka, RedL_shuliavska);
-            //Switch(GreenL_poznyaki, BlueL_teremki);
-            //Switch(BlueL_teremki, GreenL_poznyaki);
-        }
-        
-
         private static void RouteController(p.Path start, p.Path end)
         {
             var color = Colors.Purple;
@@ -180,19 +170,15 @@ namespace MetroEmu
         private static IEnumerable<RouteData> GetElements(
             b.Panel gridLines, 
             b.Panel gridButtons, 
-            LineColor color)
-        {
-            var items = new List<RouteData>();
-            for (int i = 0; i < gridLines.Children.Count; i++)
-            {
-                items.Add(new RouteData
-                {
-                    Color = color,
-                    Pair = Tuple.Create((p.Path) gridLines.Children[i], (b.Button) gridButtons.Children[i])
-                });
-            }
-            return items;
-        }
+            LineColor color) =>
+            gridLines.Children.OfType<p.Path>()
+                .Zip(gridButtons.Children.OfType<b.Button>(), 
+                    (path, btn) =>
+                        new RouteData
+                        {
+                            Pair = Tuple.Create(path, btn),
+                            Color = color
+                        });
 
         private IEnumerable<RouteData> FillList()
         {
